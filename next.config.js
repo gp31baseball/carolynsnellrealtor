@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // 👇 Turn Turbopack off explicitly for Next 16 builds on Vercel
-  turbo: false,
+  // ✅ Force Webpack instead of Turbopack
+  experimental: {
+    webpackBuildWorker: false,
+  },
 
   webpack: (config) => {
     config.resolve.fallback = {
