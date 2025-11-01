@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Global Fonts === */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* === Global Color Variables === */
+:root {
+  /* Core Palette — lightened blush family */
+  --color-blush-light: #fff7f7;   /* very pale blush-white */
+  --color-blush: #fdecec;         /* soft blush, minimal pink */
+  --color-blush-deep: #f5dada;    /* light warm base for depth */
+  --color-coral: #a94732;         /* brand accent coral */
+  --color-coral-light: #c8644c;
+  --color-charcoal: #2e2e2e;
+  --color-text-body: #3c3c3c;
+  --color-bg-paper: #fffafa;      /* gentle blush ivory */
+  --color-divider: #efe6e6;
+
+  /* Accent metallics */
+  --color-silver-light: #f7f7f7;
+  --color-silver: #ededed;
+  --color-silver-deep: #d4d4d4;
+  --color-pink-shimmer: #e8c5c8;  /* lighter, creamier blush shimmer */
+}
+
+/* === Base Styles === */
+html,
+body {
+  @apply antialiased;
+  background-color: var(--color-bg-paper);
+  color: var(--color-text-body);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Serif headings / branding text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-serif {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-charcoal);
+  font-weight: 600;
+}
+
+/* === Links === */
+a {
+  color: var(--color-charcoal);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-coral);
+}
+
+/* === Buttons (Global Defaults) === */
+button,
+.btn {
+  @apply rounded-full font-semibold transition-all duration-300;
+  background-color: var(--color-coral);
+  color: white;
+  box-shadow: 0 6px 15px rgba(169, 71, 50, 0.25);
+}
+
+button:hover,
+.btn:hover {
+  background-color: #8e3b29;
+  box-shadow: 0 8px 20px rgba(169, 71, 50, 0.35);
+}
+
+/* === Gradient Utilities === */
+.gradient-blush {
+  background: linear-gradient(
+    to bottom,
+    var(--color-blush-light),
+    var(--color-blush),
+    var(--color-blush-deep)
+  );
+}
+
+.gradient-coral {
+  background: linear-gradient(
+    to right,
+    var(--color-coral),
+    var(--color-coral-light),
+    var(--color-coral)
+  );
+}
+
+/* === Dividers === */
+.divider {
+  background: linear-gradient(
+    to right,
+    var(--color-coral),
+    var(--color-coral-light),
+    var(--color-coral)
+  );
+  height: 3px;
+  width: 100%;
+  box-shadow: 0 0 6px rgba(200, 100, 76, 0.35);
+}
+
+/* === Scroll behavior === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Utility === */
+.check-bg {
+  background-color: var(--color-bg-paper);
+}
+
+/* === Shimmer Animations === */
+
+/* Standard shimmer (neutral) */
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+.animate-shimmer {
+  animation: shimmer 4s linear infinite;
+}
+
+/* Silver shimmer (used for luxury metallic text) */
+@keyframes shimmer-silver {
+  0% {
+    background-position: 300% center;
+  }
+  100% {
+    background-position: -300% center;
+  }
+}
+.animate-shimmer-silver {
+  animation: shimmer-silver 6.5s linear infinite;
+}
+
+/* Pink shimmer (used on gray text for branded glow) */
+@keyframes pinkshimmer {
+  0% {
+    background-position: 250% center;
+  }
+  100% {
+    background-position: -250% center;
+  }
+}
+.animate-pinkshimmer {
+  animation: pinkshimmer 6s linear infinite;
+}
+
+/* === Universal shimmer text utility === */
+.shimmer-text {
+  @apply font-serif tracking-wide whitespace-nowrap text-transparent;
+  background: linear-gradient(
+    90deg,
+    var(--color-charcoal),
+    var(--color-pink-shimmer),
+    var(--color-charcoal)
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pinkshimmer 6s linear infinite;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
