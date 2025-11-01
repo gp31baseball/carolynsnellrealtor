@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // 👇 This line disables Turbopack on Vercel and keeps Webpack (like your local build)
-  turbopack: {
-    enabled: false,
+  // ✅ Disable Turbopack explicitly for Vercel build
+  experimental: {
+    turbo: false,
   },
 
   webpack: (config) => {
